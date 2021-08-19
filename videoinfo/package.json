@@ -1,0 +1,14 @@
+{
+    "name": "videoinfo",
+    "version": "1.0.0",
+    "description": "VideoInfo",
+    "main": "index.js",
+    "scripts": {
+        "electron": "electron ."
+    },
+    "author": "Chehin Juan",
+    "license": "ISC",
+    "dependencies": {
+        "electron": "^13.2.1"
+    }
+}
