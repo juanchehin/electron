@@ -12,10 +12,20 @@
     </form>
 
     <script>
+        const electron = require('electron'); // Puedo hacer esto desde el front gracias a electron
+        const {
+            ipcRenderer
+        } = electron; // Permite comunicarse con otras partes de electron
+
+
         document.querySelector('form').addEventListener('submit', (event) => {
             event.preventDefault(); // Cancela el evento, sin detener el resto del funcionamiento del evento
 
-            const file = document.querySelector('input').files[0];
+            const {
+                path
+            } = document.querySelector('input').files[0];
+
+            ipcRenderer.send('video:submit', path)
 
             // debugger
         });
