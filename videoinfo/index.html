@@ -24,6 +24,7 @@
             const {
                 path
             } = document.querySelector('input').files[0];
+            console.log(path);
 
             ipcRenderer.send('video:submit', path)
 
