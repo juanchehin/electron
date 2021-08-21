@@ -8,8 +8,10 @@
             <label>Select a video</label>
             <input type="file" accept="video/*" />
         </div>
-        <button type="submit">Get Infor</button>
+        <button type="submit">Get Info</button>
     </form>
+
+    <h1 id="result"></h1>
 
     <script>
         const electron = require('electron'); // Puedo hacer esto desde el front gracias a electron
@@ -19,7 +21,8 @@
 
 
         document.querySelector('form').addEventListener('submit', (event) => {
-            event.preventDefault(); // Cancela el evento, sin detener el resto del funcionamiento del evento
+            // event.preventDefault(); // Cancela el evento, sin detener el resto del funcionamiento del evento
+            console.log('submit , event : ', event);
 
             const {
                 path
@@ -27,8 +30,16 @@
             console.log(path);
 
             ipcRenderer.send('video:submit', path)
+            console.log('pasa ipcRenderer.send');
+
 
             // debugger
+        });
+
+        ipcRenderer.on('video:metadata', (event, duration) => {
+            console.log('pasa ipcRenderer.on');
+
+            document.querySelector('#result').innerHTML = `Video is $ {duration} seconds`;
         });
     </script>
 </body>
