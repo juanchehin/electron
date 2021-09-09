@@ -9,7 +9,9 @@
     "author": "Chehin Juan",
     "license": "ISC",
     "dependencies": {
+        "@ffmpeg-installer/ffmpeg": "^1.1.0",
         "electron": "^13.2.1",
+        "ffprobe": "^1.1.2",
         "fluent-ffmpeg": "^2.1.2"
     }
 }

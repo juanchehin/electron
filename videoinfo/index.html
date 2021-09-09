@@ -37,9 +37,9 @@
         });
 
         ipcRenderer.on('video:metadata', (event, duration) => {
-            console.log('pasa ipcRenderer.on');
+            console.log('pasa ipcRenderer.on', duration);
 
-            document.querySelector('#result').innerHTML = `Video is $ {duration} seconds`;
+            document.querySelector('#result').innerHTML = `Video is ${duration.format.duration} seconds`;
         });
     </script>
 </body>
