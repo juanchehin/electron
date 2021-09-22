@@ -1,0 +1,14 @@
+{
+    "name": "todos",
+    "version": "1.0.0",
+    "description": "todos",
+    "main": "index.js",
+    "scripts": {
+        "electron": "electron ."
+    },
+    "author": "Chehin Juan",
+    "license": "ISC",
+    "dependencies": {
+        "electron": "^15.0.0"
+    }
+}
