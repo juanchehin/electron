@@ -1,15 +1,25 @@
-<head>
-
-</head>
+<head> </head>
 
 <body>
     <form>
         <div>
-            <label>
-            Enter todo
-        </label>
-            <input autofocus/>
+            <label> Enter todo </label>
+            <input autofocus />
         </div>
         <button type="submit">Add</button>
     </form>
+
+    <script>
+        const electron = require('electron');
+        const { ipcRenderer } = electron;
+
+        document.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const { value } = document.querySelector("input");
+            ipcRenderer.send("todo:add", value);
+
+            // debugger;
+        });
+    </script>
 </body>
