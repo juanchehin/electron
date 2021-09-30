@@ -27,7 +27,6 @@ ipcMain.on('videos:added', (event, videos) => {
     // promise.then((metadata) => {
     //     console.log('metadata es : ', metadata);
     // })
-
     const promises = _.map(videos, video => {
         return new Promise((resolve, reject) => {
             ffmpeg.ffprobe(videos[0].path, (err, metadata) => {
@@ -38,6 +37,7 @@ ipcMain.on('videos:added', (event, videos) => {
         });
     });
 
+    console.log('Se ejecuto una promesa');
     // Devuelve una promesa que termina correctamente cuando todas las promesas en el argumento iterable han sido concluídas con éxito
     Promise.all(promises)
         .then((results) => {
@@ -56,9 +56,10 @@ ipcMain.on('conversion:start', (event, videos) => {
 
         ffmpeg(video.path)
             .output(outputPath)
-            .on('progress', ({ timemark }) =>
+            .on('progress', ({ timemark }) => {
+                console.log('timemark', timemark);
                 mainWindow.webContents.send('conversion:progress', { video, timemark })
-            )
+            })
             .on('end', () =>
                 mainWindow.webContents.send('conversion:end', { video, outputPath })
             )
